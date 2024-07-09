@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  homepage:
+    build:
+      context: ./homepage
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    volumes:
+      - ./homepage:/app
+    environment:
+      - NODE_ENV=production
+
+  billing:
+    build:
+      context: ./billing
+      dockerfile: Dockerfile
+    ports:
+      - "42001:80"
+    volumes:
+      - ./billing:/app
+    environment:
+      - NODE_ENV=production
+
+  reports:
+    build:
+      context: ./reports
+      dockerfile: Dockerfile
+    ports:
+      - "42002:80"
+    volumes:
+      - ./reports:/app
+    environment:
+      - NODE_ENV=production
